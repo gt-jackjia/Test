@@ -8,8 +8,8 @@ from tenacity import retry, wait_random_exponential, stop_after_attempt
 import tiktoken
 from tqdm import tqdm
 from typing import List, Iterator
-#import wget
-import urllib.request
+import wget
+#import urllib.request
 
 # Redis imports
 from redis import Redis as r
@@ -30,3 +30,7 @@ from langchain.chains import RetrievalQA
 
 CHAT_MODEL = "gpt-3.5-turbo"
 pd.set_option('display.max_colwidth', 0)
+
+
+embeddings_url = 'https://cdn.openai.com/API/examples/data/wikipedia_articles_2000.csv'
+wget.download(embeddings_url)
