@@ -33,7 +33,7 @@ pd.set_option('display.max_colwidth', 0)
 
 
 embeddings_url = 'https://cdn.openai.com/API/examples/data/wikipedia_articles_2000.csv'
-wget.download(embeddings_url)
+#wget.download(embeddings_url)
 
 
 # Setup Redis
@@ -79,3 +79,9 @@ text_embedding = VectorField(VECTOR_FIELD_NAME,
 fields = [url,title,text_chunk,file_chunk_index,text_embedding]
 
 redis_client.ping()
+
+
+
+# We'll use 1000 token chunks with some intelligence to not split at the end of a sentence
+TEXT_EMBEDDING_CHUNK_SIZE = 1000
+EMBEDDINGS_MODEL = "text-embedding-ada-002"
